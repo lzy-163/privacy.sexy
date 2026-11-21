@@ -82,7 +82,7 @@ jobs:
       -
         name: Install Docker on macOS
         if: matrix.os == 'macos' # macOS runner is missing Docker
-        run: |-
+        run: |
           # Install Docker
           brew install docker
           # Docker on macOS misses daemon due to licensing, so install colima as runtime
@@ -100,7 +100,7 @@ jobs:
         uses: ./.github/actions/force-ipv4
       -
         name: Check server is up and returns HTTP 200
-        run: >-
+        run: |
           node ./scripts/verify-web-server-status.js \
             --url http://localhost:8080  \
             --max-retries ${{ matrix.os == 'macos' && '90' || '30' }}
