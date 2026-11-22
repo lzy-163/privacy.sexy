@@ -101,6 +101,6 @@ jobs:
       -
         name: Check server is up and returns HTTP 200
         run: >-
-          node ./scripts/verify-web-server-status.js \
-            --url http://localhost:8080  \
-            --max-retries ${{ matrix.os == 'macos' && '90' || '30' }}
+          node ./scripts/verify-web-server-status.js
+          --url http://localhost:8080
+          --max-retries ${{ matrix.os == 'macos' && '90' || '30' }}
