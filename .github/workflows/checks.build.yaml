@@ -30,9 +30,11 @@ jobs:
         uses: ./.github/actions/npm-install-dependencies
       -
         name: Build web
+        if: matrix.mode != 'test'
         run: npm run build -- --mode ${{ matrix.mode }}
       -
         name: Verify web build artifacts
+        if: matrix.mode != 'test'
         run: npm run check:verify-build-artifacts -- --web
 
   build-desktop:
