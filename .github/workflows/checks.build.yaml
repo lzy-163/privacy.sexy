@@ -96,6 +96,9 @@ jobs:
         name: Run Docker image on port 8080
         run: docker run -d -p 8080:80 --rm --name privacy.sexy undergroundwires/privacy.sexy:latest
       -
+        name: Update WARP IPv6 exclusion command
+        run: perl -pi -e 's/\badd-excluded-route\b/tunnel ip add/g' ./.github/actions/force-ipv4/force-ipv4.sh
+      -
         name: Enforce IPv4 Connectivity # Used due to GitHub runners' lack of IPv6 support, preventing request timeouts.
         uses: ./.github/actions/force-ipv4
       -
